@@ -17,5 +17,10 @@ app.use(morgan("combined")); // this is a middleware which i want to use commonl
 
 // app.use('/tweets', tweetRouter); // when somebody hits localhost:PORT/tweets then it will be redirected to tweets.js where it will execute the .get functions as per the succesing url after /tweeets.
 
+
+app.use(express.json());
+app.use(express.text());
+app.use(express.urlencoded());
+
 app.use('/api', apiRoutes); // if the req starts with /api, use the apiRputer (it will get redirected to the apiRoutes.js file and execute the necessary functions accordingly)
 
