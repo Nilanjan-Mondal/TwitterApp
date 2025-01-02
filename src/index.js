@@ -3,12 +3,14 @@ import morgan from 'morgan';
 import { PORT } from './config/serverConfig.js';
 import tweetRouter from './Routes/V1/v1tweet.js'; //goto line
 import apiRoutes from './Routes/apiRoutes.js';
+import connectDB from './config/dbConfig.js';
 // create a new express app/server object
 
 const app = express();
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
+    connectDB();
 });
 
 
