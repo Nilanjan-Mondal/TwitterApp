@@ -3,6 +3,7 @@ import { geTweets, geTweetsById, createTweet } from '../../Controllers/tweetCont
 import { createTweetManualValidator } from '../../Validators/tweetManualValidators.js';
 import { validate } from '../../Validators/zodValidator.js';
 import { tweetZodSchema } from '../../Validators/tweetZodSchema.js';
+import { s3Uploader } from '../../config/multerConfig.js';
 
 const app = express();
 app.use(express.json());
@@ -16,7 +17,7 @@ router.get('/:id', geTweetsById);
 
 // router.post('/', createTweetManualValidator, createTweet); // createTweetManualValidator is a middleware that is used as validator
 
-router.post('/', validate(tweetZodSchema), createTweet); // zod validator is used as a middleware for validation
+router.post('/', s3Uploader.single('tweetImage'), validate(tweetZodSchema), createTweet); // zod validator is used as a middleware for validation
 
 
 
