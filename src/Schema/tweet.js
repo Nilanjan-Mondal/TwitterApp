@@ -6,8 +6,12 @@ const tweetSchema = new mongoose.Schema({ //mongoose contains a constructor call
         required: true,
         trim: true,  // remove whitespaces from the begining and the end of the string
         maxlength: 200
+    },
+    image: {
+        type: String,
+        default: null
     }
-});
+}, { timestamps: true });
 
 const Tweet = mongoose.model("Tweet", tweetSchema); //tweet collection (a set of data is known as collection in mongo db)
 

@@ -1,6 +1,6 @@
 import Tweet from "../Schema/tweet.js";
 
-export const createTweet = async ({ body }) => {
+export const createTweet = async ({ body, image }) => {
     try {
         const tweet = await Tweet.create({ body });
         return tweet;
@@ -9,7 +9,8 @@ export const createTweet = async ({ body }) => {
     }
 }
 
-export const getTweets = async ({ body }) => {
+export const getTweets = async () => {
+
     try {
         const tweets = await Tweet.find();
         return tweets;
